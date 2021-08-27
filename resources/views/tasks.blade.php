@@ -4,14 +4,10 @@
     @foreach($tasks as $task)
         <article>
             <h1>
-                <a href="/task/{{$task->id}}">
-                    {{$task->name}}
-                </a>
+                <label>
+                    <input type='checkbox' name='checkboxArray[]'>
+                </label>{{$task->name}}
             </h1>
-
-            <div>
-                {{$task->page}}
-            </div>
         </article>
     @endforeach
 @endsection
