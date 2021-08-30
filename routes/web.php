@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Page;
 use App\Models\Task;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +20,8 @@ Route::get('/', function () {
         'tasks' => Task::all()
     ]);
 });
-Route::get('task/{task}', function ($id) {
+Route::get('/{page:name}', function (Page $page) {
     return view('task',[
-        'task' => Task::findOrFail($id)
+        'page' => $page
     ]);
 });
