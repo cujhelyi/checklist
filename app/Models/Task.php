@@ -10,7 +10,6 @@ class Task extends Model
     use HasFactory;
 
     protected $guarded = [];
-    //this is the input box branch
 
     public function page(){
         return $this->belongsTo(Page::class);
