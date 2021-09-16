@@ -15,6 +15,7 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('page_id');
             $table->string('name');
             $table->rememberToken();
             $table->timestamps();

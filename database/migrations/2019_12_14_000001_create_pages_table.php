@@ -14,6 +14,7 @@ class CreatePagesTable extends Migration
     public function up()
     {
         Schema::create('pages', function (Blueprint $table) {
+            $table->id();
             $table->string('name')->unique();
             $table->timestamps();
         });

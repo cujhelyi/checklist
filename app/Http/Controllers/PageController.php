@@ -13,6 +13,13 @@ class PageController extends Controller
             'pages' => Page::all()
         ]);
     }
+    public function showTasks(Page $page)
+    {
+        return view('task', [
+            'tasks' => $page->tasks,
+            'name' => $page->name
+        ]);
+    }
 
     public function submitPost(Request $request)
     {
@@ -22,6 +29,7 @@ class PageController extends Controller
 
         return redirect()->back();
     }
+
     public function delete($id)
     {
         $toDelete = Page::findOrFail($id);

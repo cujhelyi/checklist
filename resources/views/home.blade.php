@@ -17,7 +17,7 @@
         <h1>
 {{--                <input type='checkbox' name='checkboxArray[]'>--}}
             <a href={{"/".$page->name}}>{{$page->name}}</a>
-            <a href={{"/delete/".$page->name}}>Delete</a>
+            <a href={{"/deletePage/".$page->id}}>Delete</a>
         </h1>
     </article>
 @endforeach

@@ -21,7 +21,8 @@ Route::get('/', [\App\Http\Controllers\PageController::class, 'showAll']);
 //        'page' => $page
 //    ]);
 //});
-Route::get('/{page:name}', [\App\Http\Controllers\TaskController::class, 'showAll']);
-Route::get('/delete/{id}', [\App\Http\Controllers\TaskController::class, 'delete']);
+Route::get('/{page:name}', [\App\Http\Controllers\PageController::class, 'showTasks']);
+Route::get('/deleteTask/{id}', [\App\Http\Controllers\TaskController::class, 'delete']);
+Route::get('/deletePage/{id}', [\App\Http\Controllers\PageController::class, 'delete']);
 Route::post('/newPage', [\App\Http\Controllers\PageController::class, 'submitPost']);
 Route::post('/newTask', [\App\Http\Controllers\TaskController::class, 'submitPost']);

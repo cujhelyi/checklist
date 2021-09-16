@@ -6,7 +6,7 @@
 <body>
 <form action="/newTask" method="POST">
     @csrf
-    <label>New Page
+    <label>New Task
         <textarea name="hello" cols="30" rows="1"></textarea>
     </label>
 
@@ -15,9 +15,8 @@
 @foreach($tasks as $task)
     <article>
         <h1>
-            {{--                <input type='checkbox' name='checkboxArray[]'>--}}
             <label>{{$task->name}}</label>
-            <a href={{"/delete/".$task->name}}>Delete</a>
+            <a href={{"/deleteTask/".$task->id}}>Delete</a>
         </h1>
     </article>
 @endforeach
