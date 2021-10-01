@@ -16,16 +16,16 @@ class TaskController extends Controller
 
     }
 
-    public function submitPost(Request $request, Page $page)
+    public function updateStatus(Request $request): \Illuminate\Http\RedirectResponse
     {
-        Task::query()->create([
-            'name' => $request->input('hello'),
-            'page_id' => 1
-        ]);
+        $task = Task::findOrFail($request->submit);
+        $task->status === 'X'? $task->status = '✔': $task->status = 'X';
+        $task->save();
 
         return redirect()->back();
+
     }
-    public function delete($id)
+    public function delete($id): \Illuminate\Http\RedirectResponse
     {
         $toDelete = Task::findOrFail($id);
         $toDelete->delete();

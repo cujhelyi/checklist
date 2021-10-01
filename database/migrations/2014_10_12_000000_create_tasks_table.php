@@ -17,6 +17,7 @@ class CreateTasksTable extends Migration
             $table->id();
             $table->foreignId('page_id');
             $table->string('name');
+            $table->char('status');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -16,16 +17,25 @@ class PageController extends Controller
     public function showTasks(Page $page)
     {
         return view('task', [
-            'tasks' => $page->tasks,
-            'name' => $page->name
+            'pages' => Page::all(),
+            'currentPage' => $page,
         ]);
     }
 
-    public function submitPost(Request $request)
+    public function submitPage(Request $request)
     {
         Page::query()->create([
             'name' => $request->input('hello')
         ]);
+
+        return redirect()->back();
+    }
+
+    public function submitTask(Request $request, int $pageId)
+    {
+        $task = new Task((['name' => $request->input('hello'), 'status' => 'X']));
+        $page =  Page::findOrFail($pageId);
+        $page->tasks()->save($task);
 
         return redirect()->back();
     }
