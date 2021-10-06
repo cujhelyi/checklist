@@ -18,22 +18,35 @@
 
     <button type="submit">Submit</button>
 </form>
-<form action="/changeStatus" method="POST">
-    @csrf
+
+<div x-data="{show: false}">
     @foreach($currentPage->tasks as $task)
         <article>
             <h1>
-                <button type='submit' name='submit' value={{$task->id}}>{{$task->status}}</button>
-                <input type="checkbox" name="checkboxArray[]" onclick="for ($checkboxArray as $checkbox)">
+                <label>
+                    <input type="checkbox" name="tasksDone" @click="myFunction()">
+                </label>
                 <label>{{$task->name}}</label>
+                <div x-show="show">
                 <a href={{"/deleteTask/".$task->id}}>Delete</a>
+                </div>
             </h1>
         </article>
     @endforeach
-{{--    <button type="submit">Submit</button>--}}
-</form>
+</div>
+
 @endsection
-{{--make array of checkboxes of size = $currentPage->tasksDONE--}}
-{{--add them one beside each task nameDONE--}}
-{{--when one is changed check if they're all checked--}}
-{{--profit??--}}
+<script>
+    function myFunction() {
+        let tasksLen = 0;
+        let boxArray = document.getElementsByName("tasksDone")
+        for (let i = 0; i < boxArray.length; i++) {
+            if(boxArray[i].checked) {
+                tasksLen++;
+            }
+        }
+        if(tasksLen === boxArray.length) {
+            console.log('tests' + tasksLen);
+        }
+    }
+</script>
