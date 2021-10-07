@@ -5,3 +5,35 @@ body{
 h1{
     margin-left: auto;
 }
+
+@keyframes drive {
+    0%{
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(200px);
+    }
+
+    100% {
+        transform: translateX(1000px);
+    }
+
+}
+
+main {
+    width: 50vw;
+}
+input {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    border: 1px solid grey;
+}
+
+.goTime {
+    animation: drive 801ms linear;
+}
+
+

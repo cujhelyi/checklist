@@ -18,21 +18,19 @@
 
     <button type="submit">Submit</button>
 </form>
-
 <div x-data="{show: false}">
-    @foreach($currentPage->tasks as $task)
-        <article>
-            <h1>
-                <label>
-                    <input type="checkbox" name="tasksDone" @click="myFunction()">
-                </label>
-                <label>{{$task->name}}</label>
-                <div x-show="show">
-                <a href={{"/deleteTask/".$task->id}}>Delete</a>
-                </div>
-            </h1>
-        </article>
-    @endforeach
+@foreach($currentPage->tasks as $task)
+    <article>
+        <h1>
+            <input type="checkbox" name="tasksDone" @click="myFunction()">
+            <label>{{$task->name}}</label>
+            <a href={{"/deleteTask/".$task->id}}>Delete</a>
+        </h1>
+    </article>
+@endforeach
+</div>
+<div id="base" class="waiting">
+    <img src="/images/cruisin-oldies.jpg" alt="crusin car" height="200" width="200">
 </div>
 
 @endsection
@@ -46,7 +44,15 @@
             }
         }
         if(tasksLen === boxArray.length) {
-            console.log('tests' + tasksLen);
+            submitClick();
         }
+    }
+    function submitClick() {
+        document.getElementById('base').classList.remove('waiting');
+        document.getElementById('base').classList.add('goTime');
+
+        setTimeout(function() {
+            document.getElementById('base').remove();
+        }, 800);
     }
 </script>
